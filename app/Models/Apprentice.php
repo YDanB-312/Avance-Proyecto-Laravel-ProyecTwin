@@ -21,7 +21,7 @@ class Apprentice extends Model
 
     public function projects()
     {
-        return $this->belongsToMany(Project::class, 'apprentice_project', 'id_aprendiz', 'id_proyecto');
+        return $this->belongsToMany(Project::class, 'apprentice_projects', 'id_aprendiz', 'id_proyecto');
     }
 
     public function progresses()

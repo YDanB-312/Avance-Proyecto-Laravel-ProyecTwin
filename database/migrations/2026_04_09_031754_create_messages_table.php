@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('messages', function (Blueprint $table) {
@@ -18,16 +15,13 @@ return new class extends Migration
             $table->boolean('leido')->default(false);
             $table->timestamp('fecha_envio');
 
-            $table->foreignId('id_remitente')->constrained('general_users');
-            $table->foreignId('id_destinatario')->constrained('general_users');
+            $table->foreignId('id_remitente')->constrained('general_users')->onDelete('cascade');
+            $table->foreignId('id_destinatario')->constrained('general_users')->onDelete('cascade');
 
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('messages');

@@ -18,4 +18,9 @@ class Progress extends Model
     {
         return $this->belongsTo(Apprentice::class, 'id_aprendiz');
     }
+
+    public function evaluations()
+    {
+        return $this->hasMany(ProgressEvaluation::class, 'id_avance');
+    }
 }

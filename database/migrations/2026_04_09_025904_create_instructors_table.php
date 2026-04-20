@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('instructors', function (Blueprint $table) {
@@ -22,14 +19,11 @@ return new class extends Migration
             $table->text('plantilla_comentarios')->nullable();
 
             $table->foreignId('id_usuario')->constrained('general_users')->onDelete('cascade');
-
+            
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('instructors');

@@ -13,4 +13,9 @@ class Admin extends Model
     {
         return $this->belongsTo(GeneralUser::class, 'id_usuario');
     }
+
+    public function bugReports()
+    {
+        return $this->hasMany(BugReport::class, 'id_admin');
+    }
 }

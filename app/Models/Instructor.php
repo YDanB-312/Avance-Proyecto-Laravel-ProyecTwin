@@ -23,4 +23,9 @@ class Instructor extends Model
     {
         return $this->hasMany(Assessment::class, 'id_instructor');
     }
+
+    public function progressEvaluations()
+    {
+        return $this->hasMany(ProgressEvaluation::class, 'id_instructor');
+    }
 }

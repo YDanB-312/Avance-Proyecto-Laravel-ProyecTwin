@@ -9,7 +9,7 @@ class Notification extends Model
 {
     use HasFactory;
 
-    public function generalUser()
+    public function user()
     {
         return $this->belongsTo(GeneralUser::class, 'id_usuario');
     }

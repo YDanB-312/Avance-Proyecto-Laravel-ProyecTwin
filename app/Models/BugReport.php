@@ -16,6 +16,6 @@ class BugReport extends Model
 
     public function admin()
     {
-        return $this->belongsTo(GeneralUser::class, 'id_admin');
+        return $this->belongsTo(Admin::class, 'id_admin');
     }
 }

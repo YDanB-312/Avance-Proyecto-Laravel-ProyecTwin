@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class ProgressEvaluation extends Model
 {
     use HasFactory;
+
+    public function progress()
+    {
+        return $this->belongsTo(Progress::class, 'id_avance');
+    }
+
+    public function instructor()
+    {
+        return $this->belongsTo(Instructor::class, 'id_instructor');
+    }
 }

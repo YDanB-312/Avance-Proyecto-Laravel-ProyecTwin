@@ -38,4 +38,14 @@ class GeneralUser extends Model
     {
         return $this->hasMany(Message::class, 'id_destinatario');
     }
+
+    public function notifications()
+    {
+        return $this->hasMany(Notification::class, 'id_usuario');
+    }
+
+    public function bugReports()
+    {
+        return $this->hasMany(BugReport::class, 'id_usuario');
+    }
 }

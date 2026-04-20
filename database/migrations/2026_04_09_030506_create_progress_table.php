@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('progress', function (Blueprint $table) {
@@ -21,16 +18,13 @@ return new class extends Migration
             $table->date('fecha_registro');
             $table->float('porcentaje_progreso');
 
-            $table->foreignId('id_proyecto')->constrained('projects');
-            $table->foreignId('id_aprendiz')->constrained('apprentices');
+            $table->foreignId('id_proyecto')->constrained('projects')->onDelete('cascade');
+            $table->foreignId('id_aprendiz')->constrained('apprentices')->onDelete('cascade');
 
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('progress');

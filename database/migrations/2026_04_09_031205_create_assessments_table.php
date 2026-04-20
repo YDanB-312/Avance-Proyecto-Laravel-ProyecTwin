@@ -6,9 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('assessments', function (Blueprint $table) {
@@ -18,16 +15,13 @@ return new class extends Migration
             $table->date('fecha_revision');
             $table->integer('tiempo_respuesta_dias');
 
-            $table->foreignId('id_proyecto')->constrained('projects');
-            $table->foreignId('id_instructor')->constrained('instructors');
+            $table->foreignId('id_proyecto')->constrained('projects')->onDelete('cascade');
+            $table->foreignId('id_instructor')->constrained('instructors')->onDelete('cascade');
 
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('assessments');

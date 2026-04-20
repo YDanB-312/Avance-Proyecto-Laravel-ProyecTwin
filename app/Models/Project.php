@@ -21,7 +21,7 @@ class Project extends Model
 
     public function apprentices()
     {
-        return $this->belongsToMany(Apprentice::class, 'apprentice_project', 'id_proyecto', 'id_aprendiz');
+        return $this->belongsToMany(Apprentice::class, 'apprentice_projects', 'id_proyecto', 'id_aprendiz');
     }
 
     public function progresses()
@@ -32,5 +32,20 @@ class Project extends Model
     public function assessments()
     {
         return $this->hasMany(Assessment::class, 'id_proyecto');
+    }
+
+    public function histories()
+    {
+        return $this->hasMany(ProjectHistory::class, 'id_proyecto');
+    }
+
+    public function similaritiesAsOrigin()
+    {
+        return $this->hasMany(Similarity::class, 'id_proyecto_1');
+    }
+
+    public function similaritiesAsDestination()
+    {
+        return $this->hasMany(Similarity::class, 'id_proyecto_2');
     }
 }
